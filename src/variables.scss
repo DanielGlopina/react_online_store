@@ -1,0 +1,25 @@
+//Fonts
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+//Variables
+$font-primary: "Inter", "sans-serif";
+$font-secondary: "Open Sans", "sans-serif";
+
+$color-light: rgb(240, 240, 240);
+$color-header-secondary: rgb(26, 26, 26);
+$color-card-bg: rgb(224, 221, 221);
+
+//Templates
+%btn-default {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color-light;
+  background-color: $color-header-secondary;
+  border: none;
+  width: 60%;
+  height: 40px;
+  align-self: center;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
