@@ -54,6 +54,7 @@ function App() {
         chosenProducts={chosenProducts}
         setProduct={setProduct}
       />
+      <SearchProduct />
       <ProductCards
         sizeFilter={sizeFilter}
         brandFilter={brandFilter}
@@ -218,6 +219,21 @@ function Nav({
         </div>
       </div>
     </nav>
+  );
+}
+
+function SearchProduct() {
+  return (
+    <section className="search">
+      <div className="container">
+        <div className="search-products">
+          <input type="text" placeholder="Example: New Balance 574" />
+          <button type="button">
+            <img src="/public/icons/search.svg" alt="search icon" />
+          </button>
+        </div>
+      </div>
+    </section>
   );
 }
 

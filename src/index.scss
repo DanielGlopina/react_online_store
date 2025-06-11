@@ -181,6 +181,31 @@ nav {
   }
 }
 
+.search-products {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+
+  input {
+    width: 50%;
+    background-color: $color-card-bg;
+    outline: none;
+    border-radius: 10px 0 0 10px;
+  }
+
+  button {
+    width: 50px;
+    background-color: $color-header-secondary;
+    border: none;
+    border-radius: 0 10px 10px 0;
+    cursor: pointer;
+    img {
+      width: 30px;
+    }
+  }
+}
+
 .product-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
