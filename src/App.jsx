@@ -39,6 +39,12 @@ function App() {
   const [stockFilter, setStockFilter] = useState(false);
   const [isOpen, setModalState] = useState(false);
   const [chosenProducts, setProduct] = useState([]);
+  const [value, setValue] = useState("");
+  const [nameFilter, setNameFilter] = useState("");
+
+  const searchFunc = () => {
+    setNameFilter(value.toLowerCase());
+  };
 
   return (
     <main>
@@ -54,7 +60,7 @@ function App() {
         chosenProducts={chosenProducts}
         setProduct={setProduct}
       />
-      <SearchProduct />
+      <SearchProduct setValue={setValue} searchFunc={searchFunc} />
       <ProductCards
         sizeFilter={sizeFilter}
         brandFilter={brandFilter}
@@ -63,6 +69,8 @@ function App() {
         productData={productData}
         chosenProducts={chosenProducts}
         setProduct={setProduct}
+        searchFunc={searchFunc}
+        nameFilter={nameFilter}
       />
       <Footer />
     </main>
@@ -222,13 +230,17 @@ function Nav({
   );
 }
 
-function SearchProduct() {
+function SearchProduct({ setValue, searchFunc }) {
   return (
     <section className="search">
       <div className="container">
         <div className="search-products">
-          <input type="text" placeholder="Example: New Balance 574" />
-          <button type="button">
+          <input
+            type="text"
+            placeholder="Example: New Balance 574"
+            onChange={(event) => setValue(event.target.value)}
+          />
+          <button type="button" onClick={searchFunc}>
             <img src="/public/icons/search.svg" alt="search icon" />
           </button>
         </div>
@@ -245,6 +257,7 @@ function ProductCards({
   productData,
   chosenProducts,
   setProduct,
+  nameFilter,
 }) {
   return (
     <section className="product-cards">
@@ -260,8 +273,15 @@ function ProductCards({
               brandFilter === "Any" || product.brand.includes(brandFilter);
             const genderMatch =
               genderFilter === "Any" || product.gender.includes(genderFilter);
+            const name = product.name.toLowerCase().includes(nameFilter);
 
-            if (!stockMatch || !sizeMatch || !brandMatch || !genderMatch) {
+            if (
+              !stockMatch ||
+              !sizeMatch ||
+              !brandMatch ||
+              !genderMatch ||
+              !name
+            ) {
               return null;
             }
 
