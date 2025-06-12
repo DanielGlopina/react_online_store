@@ -36,7 +36,7 @@
     "material": "Suede/Textile",
     "gender": "Women",
     "in_stock": true,
-    "image_url": "https://newbalance.ua/img/photos/2aa2d27aeeeef4cd1cc8553722547e35.jpg"
+    "image_url": "https://moscow-newbalance.ru/image/cache/catalog/!111/wl574eg_nb_02_i-400x400.jpg"
   },
   {
     "id": 4,
@@ -193,5 +193,83 @@
     "gender": "Men",
     "in_stock": false,
     "image_url": "https://fishing1.com.ua/image/cache/catalog/Odezda/karp/buty/sapogi-Nash-700x700.jpg"
+  },
+  {
+    "id": 16,
+    "name": "Nike Air Zoom Pegasus 39",
+    "brand": "Nike",
+    "price": 129,
+    "currency": "USD",
+    "sizes": [40, 41, 42, 43, 44],
+    "color": "Gray/White",
+    "material": "Mesh",
+    "gender": "Men",
+    "in_stock": true,
+    "image_url": "https://yesoriginal.com.ua/image/cache/catalog/i/de/cb/4ebef37866321c182e202bee57a3fbb4-1215x1280.webp"
+  },
+  {
+    "id": 17,
+    "name": "Adidas Forum Low",
+    "brand": "Adidas",
+    "price": 110,
+    "currency": "USD",
+    "sizes": [38, 39, 40, 41],
+    "color": "White/Blue",
+    "material": "Leather",
+    "gender": "Unisex",
+    "in_stock": true,
+    "image_url": "https://akn-ss.b-cdn.net/products/2025/04/21/34250306/60a8ceba-70c6-4452-b1e8-7956016324be.jpg"
+  },
+  {
+    "id": 18,
+    "name": "Reebok Club C 85",
+    "brand": "Reebok",
+    "price": 95,
+    "currency": "USD",
+    "sizes": [36, 37, 38, 39, 40],
+    "color": "Chalk/Green",
+    "material": "Leather",
+    "gender": "Women",
+    "in_stock": true,
+    "image_url": "https://reebok.kiev.ua/files/product-photos/sku-bs8242.jpg"
+  },
+  {
+    "id": 19,
+    "name": "New Balance 997H",
+    "brand": "New Balance",
+    "price": 115,
+    "currency": "USD",
+    "sizes": [39, 40, 41, 42],
+    "color": "Gray/Navy",
+    "material": "Suede/Textile",
+    "gender": "Men",
+    "in_stock": false,
+    "image_url": "https://spraytown.com.ua/wp-content/uploads/2020/09/New-Balance-997H-Black-White.jpg"
+  },
+  {
+    "id": 20,
+    "name": "Puma Suede Classic",
+    "brand": "Puma",
+    "price": 89,
+    "currency": "USD",
+    "sizes": [37, 38, 39, 40],
+    "color": "Red/White",
+    "material": "Suede",
+    "gender": "Unisex",
+    "in_stock": true,
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmtIlFOI3_WeDReOGHtplJGD_QT7Gs6NEfYw&s"
+  },
+  {
+    "id": 21,
+    "name": "Asics GT-1000 11",
+    "brand": "Asics",
+    "price": 104,
+    "currency": "USD",
+    "sizes": [40, 41, 42, 43, 44],
+    "color": "Black/Gray",
+    "material": "Engineered Mesh",
+    "gender": "Men",
+    "in_stock": true,
+    "image_url": "https://content1.rozetka.com.ua/goods/images/big/331557113.jpg"
   }
 ]

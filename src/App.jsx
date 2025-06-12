@@ -33,6 +33,7 @@ function App() {
   }
   //Events interracting
 
+  const [isNavOpen, setState] = useState(false);
   const [sizeFilter, setSize] = useState("Any");
   const [brandFilter, setBrand] = useState("Any");
   const [genderFilter, setGender] = useState("Any");
@@ -47,37 +48,47 @@ function App() {
   };
 
   return (
-    <main>
-      <Header />
-      <Nav
-        setSize={setSize}
-        setBrand={setBrand}
-        setGender={setGender}
-        stockFilter={stockFilter}
-        setStockFilter={setStockFilter}
-        isOpen={isOpen}
-        setModalState={setModalState}
-        chosenProducts={chosenProducts}
-        setProduct={setProduct}
-      />
-      <SearchProduct setValue={setValue} searchFunc={searchFunc} />
-      <ProductCards
-        sizeFilter={sizeFilter}
-        brandFilter={brandFilter}
-        genderFilter={genderFilter}
-        stockFilter={stockFilter}
-        productData={productData}
-        chosenProducts={chosenProducts}
-        setProduct={setProduct}
-        searchFunc={searchFunc}
-        nameFilter={nameFilter}
-      />
-      <Footer />
-    </main>
+    <div className="page-wrapper">
+      <main>
+        <Header isNavOpen={isNavOpen} setState={setState} />
+        <Nav
+          isNavOpen={isNavOpen}
+          setState={setState}
+          setSize={setSize}
+          setBrand={setBrand}
+          setGender={setGender}
+          stockFilter={stockFilter}
+          setStockFilter={setStockFilter}
+          isOpen={isOpen}
+          setModalState={setModalState}
+          chosenProducts={chosenProducts}
+          setProduct={setProduct}
+        />
+        <Modal
+          isOpen={isOpen}
+          setModalState={setModalState}
+          chosenProducts={chosenProducts}
+          setProduct={setProduct}
+        />
+        <SearchProduct setValue={setValue} searchFunc={searchFunc} />
+        <ProductCards
+          sizeFilter={sizeFilter}
+          brandFilter={brandFilter}
+          genderFilter={genderFilter}
+          stockFilter={stockFilter}
+          productData={productData}
+          chosenProducts={chosenProducts}
+          setProduct={setProduct}
+          searchFunc={searchFunc}
+          nameFilter={nameFilter}
+        />
+        <Footer />
+      </main>
+    </div>
   );
 }
 
-function Header() {
+function Header({ isNavOpen, setState }) {
   return (
     <header>
       <div className="container">
@@ -87,11 +98,28 @@ function Header() {
           <h2>®</h2>
         </div>
       </div>
+
+      <button
+        className="open-close-nav"
+        onClick={() => (isNavOpen ? setState(false) : setState(true))}
+      >
+        Filters
+        <img
+          src={
+            isNavOpen
+              ? "public/icons/close-modal.svg"
+              : "/public/icons/open-modal.svg"
+          }
+          alt="open modal button"
+        />
+      </button>
     </header>
   );
 }
 
 function Nav({
+  isNavOpen,
+  setState,
   setSize,
   setBrand,
   setGender,
@@ -102,31 +130,8 @@ function Nav({
   chosenProducts,
   setProduct,
 }) {
-  const deletingElem = (item) => {
-    setProduct([
-      ...chosenProducts.slice(0, chosenProducts.indexOf(item)),
-      ...chosenProducts.slice(chosenProducts.indexOf(item) + 1),
-    ]);
-  };
-
-  const addQuantity = (product) => {
-    setProduct(
-      chosenProducts.map((item) =>
-        item === product ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
-  };
-
-  const reduceQuantity = (product) => {
-    setProduct(
-      chosenProducts.map((item) =>
-        item === product ? { ...item, quantity: item.quantity - 1 } : item
-      )
-    );
-  };
-
   return (
-    <nav>
+    <nav className={isNavOpen ? "" : "hiden"}>
       <div className="container">
         <div className="nav-content">
           <div className="select-content">
@@ -183,50 +188,84 @@ function Nav({
             <img src="/public/icons/shopping-cart.svg" alt="" />
             <h5>{chosenProducts.length}</h5>
           </button>
-
-          <div className={isOpen ? "modal" : "modal hiden"}>
-            <h2>Shopping Cart</h2>
-            {chosenProducts.map((product) => (
-              <div className="selected-product">
-                <img src={product.image_url} alt={product.image_url} />
-                <div className="general-abt">
-                  <h3>{product.name}</h3>
-                  <h4>{product.gender}</h4>
-                </div>
-
-                <div className="price">
-                  <h3>{product.price} $</h3>
-                </div>
-
-                <div className="quantity-counter">
-                  <button
-                    onClick={() =>
-                      product.quantity === 1
-                        ? deletingElem(product)
-                        : reduceQuantity(product)
-                    }
-                  >
-                    -
-                  </button>
-                  <h3>{product.quantity}</h3>
-                  <button
-                    onClick={() => {
-                      addQuantity(product);
-                    }}
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-            ))}
-            <h3>
-              {chosenProducts.length < 1 ? "No products to order😐..." : ""}
-            </h3>
-            <button>Order Now!</button>
-          </div>
         </div>
       </div>
     </nav>
+  );
+}
+
+function Modal({ isOpen, setModalState, chosenProducts, setProduct }) {
+  const deletingElem = (item) => {
+    setProduct([
+      ...chosenProducts.slice(0, chosenProducts.indexOf(item)),
+      ...chosenProducts.slice(chosenProducts.indexOf(item) + 1),
+    ]);
+  };
+
+  const addQuantity = (product) => {
+    setProduct(
+      chosenProducts.map((item) =>
+        item === product ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
+  };
+
+  const reduceQuantity = (product) => {
+    setProduct(
+      chosenProducts.map((item) =>
+        item === product ? { ...item, quantity: item.quantity - 1 } : item
+      )
+    );
+  };
+
+  return (
+    <div className={isOpen ? "modal" : "modal hiden"}>
+      <div className="modal-title">
+        <h2>Shopping Cart</h2>
+        <button
+          type="button"
+          onClick={() => setModalState(isOpen ? false : true)}
+          className="close-modal"
+        >
+          x
+        </button>
+      </div>
+      {chosenProducts.map((product) => (
+        <div className="selected-product">
+          <img src={product.image_url} alt={product.image_url} />
+          <div className="general-abt">
+            <h3>{product.name}</h3>
+            <h4>{product.gender}</h4>
+          </div>
+
+          <div className="price">
+            <h3>{product.price} $</h3>
+          </div>
+
+          <div className="quantity-counter">
+            <button
+              onClick={() =>
+                product.quantity === 1
+                  ? deletingElem(product)
+                  : reduceQuantity(product)
+              }
+            >
+              -
+            </button>
+            <h3>{product.quantity}</h3>
+            <button
+              onClick={() => {
+                addQuantity(product);
+              }}
+            >
+              +
+            </button>
+          </div>
+        </div>
+      ))}
+      <h3>{chosenProducts.length < 1 ? "No products to order😐..." : ""}</h3>
+      <button>Order Now!</button>
+    </div>
   );
 }
 
