@@ -82,6 +82,7 @@ function App() {
           searchFunc={searchFunc}
           nameFilter={nameFilter}
         />
+        <BottomNav />
         <Footer />
       </main>
     </div>
@@ -366,6 +367,77 @@ function ProductCards({
               </div>
             );
           })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BottomNav() {
+  return (
+    <section className="bottom-nav">
+      <div className="container">
+        <div className="bottom-nav-content">
+          <div className="column">
+            <h2>Shop</h2>
+            <ul>
+              <li>
+                <a href="#">Men's Sneakers</a>
+              </li>
+              <li>
+                <a href="#">Women's Sneakers</a>
+              </li>
+              <li>
+                <a href="#">Kids' Sneakers</a>
+              </li>
+              <li>
+                <a href="#">New Arrivals</a>
+              </li>
+              <li>
+                <a href="#">Best Sellers</a>
+              </li>
+            </ul>
+          </div>
+          <div className="column">
+            <h2>Customer Service</h2>
+            <ul>
+              <li>
+                <a href="#">Shipping & Delivery</a>
+              </li>
+              <li>
+                <a href="#">Returns & Exchanges</a>
+              </li>
+              <li>
+                <a href="#">Size Guide</a>
+              </li>
+              <li>
+                <a href="#">FAQs</a>
+              </li>
+              <li>
+                <a href="#">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+          <div className="column">
+            <h2>About</h2>
+            <ul>
+              <li>
+                <a href="#">Our Story</a>
+              </li>
+              <li>
+                <a href="#">Careers</a>
+              </li>
+              <li>
+                <a href="#">Store Locator</a>
+              </li>
+              <li>
+                <a href="#">Privacy Policy</a>
+              </li>
+              <li>
+                <a href="#">Terms of Service</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>

@@ -231,6 +231,40 @@ nav {
   cursor: not-allowed;
 }
 
+.bottom-nav {
+  background-color: $color-header-secondary;
+  padding: 10px 0 10px 0;
+
+  .bottom-nav-content {
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+    color: $color-light;
+    font-family: $font-secondary;
+    .column {
+      text-align: center;
+      h2 {
+        font-weight: 500;
+        font-size: 18px;
+      }
+
+      ul {
+        padding: 0;
+        margin: 0;
+      }
+
+      li {
+        font-weight: 300;
+        font-size: 13px;
+        list-style: none;
+        a {
+          text-decoration: none;
+          color: $color-light;
+        }
+      }
+    }
+  }
+}
 footer {
   background-color: rgb(13, 13, 13);
 }
