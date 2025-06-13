@@ -217,6 +217,10 @@ nav {
       @extend %btn-default;
     }
   }
+  .no-results {
+    grid-column: 1/4;
+    text-align: center;
+  }
 }
 
 .out-stock {
