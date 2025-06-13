@@ -1,12 +1,25 @@
-# React + Vite
+🛍️ React Online Store
+React Online Store is a single-page application (SPA) that demonstrates the core functionality of an e-commerce interface: product filtering, dynamic rendering of item cards, cart management, and stock validation. It is built using modern front-end technologies with a focus on component-based architecture and responsive UI.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🚀 Technologies Used
+React — Main library for building the UI using reusable components and hooks (useState, useEffect)
+Vite — Fast front-end build tool used for development and production builds
+JavaScript (ES6+) — Core programming language
+CSS Grid & Flexbox — For responsive and structured layout of the product cards and filters
+Modular CSS — For component-level styling
+Conditional Rendering — Displaying components based on state (e.g., when no products match the filters)
+State Management — Using React's built-in useState for filters, product data, and cart logic
+📦 Features
+Dynamic rendering of product cards with:
+Image, name, brand, gender, price, sizes
+"Add to Cart" button with stock check
+Filtering capabilities:
+By stock availability
+By size (e.g., 38, 39, etc.)
+By brand
+By gender (Men/Women)
+By partial name match (real-time search)
+Message shown when no products match the selected filters
+Basic cart logic:
+Prevents adding duplicate products
+Only allows adding products that are in stock
