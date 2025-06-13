@@ -299,33 +299,27 @@ function ProductCards({
   setProduct,
   nameFilter,
 }) {
+  const filteredProducts = productData.filter((product) => {
+    const stockMatch = !stockFilter || (product.in_stock && stockFilter);
+    const sizeMatch =
+      sizeFilter === "Any" || product.sizes.includes(Number(sizeFilter));
+    const brandMatch =
+      brandFilter === "Any" || product.brand.includes(brandFilter);
+    const genderMatch =
+      genderFilter === "Any" || product.gender.includes(genderFilter);
+    const name = product.name.toLowerCase().includes(nameFilter);
+
+    return stockMatch && sizeMatch && brandMatch && genderMatch && name;
+  });
+
   return (
     <section className="product-cards">
       <div className="container">
         <div className="product-container">
-          {productData.map((product) => {
-            const stockMatch =
-              !stockFilter || (product.in_stock && stockFilter);
-            const sizeMatch =
-              sizeFilter === "Any" ||
-              product.sizes.includes(Number(sizeFilter));
-            const brandMatch =
-              brandFilter === "Any" || product.brand.includes(brandFilter);
-            const genderMatch =
-              genderFilter === "Any" || product.gender.includes(genderFilter);
-            const name = product.name.toLowerCase().includes(nameFilter);
-
-            if (
-              !stockMatch ||
-              !sizeMatch ||
-              !brandMatch ||
-              !genderMatch ||
-              !name
-            ) {
-              return null;
-            }
-
-            return (
+          {filteredProducts.length === 0 ? (
+            <h2 className="no-results">No results for the chosen filters.</h2>
+          ) : (
+            filteredProducts.map((product) => (
               <div
                 className={`product ${!product.in_stock ? "out-stock" : ""}`}
                 key={product.id}
@@ -365,8 +359,8 @@ function ProductCards({
                   {!product.in_stock ? "Out of stock" : "Add to cart"}
                 </button>
               </div>
-            );
-          })}
+            ))
+          )}
         </div>
       </div>
     </section>
